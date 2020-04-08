@@ -89,7 +89,7 @@ body {
 .slider__inner:hover .tile:hover {
   opacity: 1;
 }
-.slider--enlarge .slider__inner:hover .tile:hover {
+.slider--large .slider__inner:hover .tile:hover {
   transform: scale(1.5);
   transform: scale(1.5);
 }
@@ -155,7 +155,7 @@ body {
   padding: 10px;
 }
 
-.slider--enlarge .tile:hover ~ .tile {
+.slider--large .tile:hover ~ .tile {
   transform: translate3d(125px, 0, 0);
   transform: translate3d(125px, 0, 0);
 }

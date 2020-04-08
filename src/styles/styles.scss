@@ -7,7 +7,6 @@ body{
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 $slider-width: 250px;
 $slider-height: 140px;
 $slider-scale: 1.5;
@@ -42,7 +41,7 @@ $slider-transition: 400ms;
         opacity: 0.3;
         &:hover {
           opacity: 1;
-          #{ $slider }--enlarge & {
+          #{ $slider }--large & {
            transform: scale($slider-scale);
             transform: scale($slider-scale);
           }
@@ -120,7 +119,7 @@ $slider-transition: 400ms;
     }
   }
 }
-.slider--enlarge {
+.slider--large {
   .tile {
     &:hover {
       ~ .tile {
