@@ -1,0 +1,132 @@
+@import "reset";
+
+body{
+
+  background: #2b3e64;
+  color: #ecf0f1;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+$slider-width: 250px;
+$slider-height: 140px;
+$slider-scale: 1.5;
+$slider-transition: 400ms;
+.title1 {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 18px;
+  padding-left: 2em;
+  padding-top: 2em;
+  font-weight: bolder;
+}
+
+.slider {
+  $slider: &;
+  overflow: scroll;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  &__inner {
+    transition: $slider-transition translate(100px);
+    transition: $slider-transition transform;
+    transition: $slider-transition transform,
+      $slider-transition translate(100px);
+    white-space: nowrap;
+    margin: $slider-height/2 0;
+
+    &:hover {
+      .tile {
+        opacity: 0.3;
+        &:hover {
+          opacity: 1;
+          #{ $slider }--enlarge & {
+           transform: scale($slider-scale);
+            transform: scale($slider-scale);
+          }
+        }
+      }
+    }
+  }
+  .tile {
+    position: relative;
+    display: inline-block;
+    width: $slider-width;
+    height: $slider-height;
+    margin: 0 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: $slider-transition all;
+    transform-origin: center left;
+    &__img {
+      width: $slider-width;
+      height: $slider-height;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+    &__details {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      font-size: 10px;
+      opacity: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      transition: $slider-transition opacity;
+      &:after,
+      &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &:after {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #ecf0f1;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+      &:before {
+        content: "▶";
+        font-size: 30px;
+        line-height: 30px;
+        margin: 2px;
+        text-align: center;
+        z-index: 2;
+      }
+    }
+    &:hover {
+      .tile__details {
+        opacity: 1;
+      }
+    }
+
+    &__title {
+      position: absolute;
+      bottom: 0;
+      padding: 10px;
+    }
+  }
+}
+.slider--enlarge {
+  .tile {
+    &:hover {
+      ~ .tile {
+        transform: translate3d($slider-width/2, 0, 0);
+        transform: translate3d($slider-width/2, 0, 0);
+      }
+    }
+  }
+}
